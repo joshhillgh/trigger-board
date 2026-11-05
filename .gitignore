@@ -1,0 +1,7 @@
+# Your pipeline data stays local — never push it to the shared repo.
+# (data.js and account-log.md ship as templates; after your first sweep,
+# don't commit your regenerated versions back. See README.)
+playbook.docx
+collateral/
+runs/*
+!runs/.gitkeep
