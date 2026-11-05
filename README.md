@@ -12,6 +12,14 @@ Built to be honest rather than impressive: every trigger needs an exact
 date and a working source URL, thin weeks report as thin weeks, and
 company misfortune is never used.
 
+## What you need
+
+- **Claude Code**, installed and signed in with your own account — the
+  sweep runs on your machine, under your Claude usage, not anyone else's.
+- **Web access allowed** in your Claude Code session (WebSearch and
+  WebFetch) — without it the sweep cannot do its primary job.
+- Windows (the launcher and local server are plain PowerShell).
+
 ## Setup (once, ~2 minutes)
 
 1. Clone or download this repo into a **synced folder** (OneDrive), so a
