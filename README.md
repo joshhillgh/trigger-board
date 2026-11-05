@@ -1,27 +1,33 @@
 # Trigger Board
 
-A weekly buying-trigger sweep plus a local dashboard, run entirely by
-Claude Code. The sweep walks dated news sources for your territory, filters
-what it finds against your ICP, and hands back a ranked, workable account
-list with sources, decay windows, entry personas and paste-ready outreach
-drafts. The dashboard renders it at `http://localhost:8787`.
+A weekly buying-trigger sweep plus a local dashboard for Insight AI
+business development, run entirely by Claude Code. The offer and the plays
+are baked in — you configure the industry you sell into. The sweep walks
+dated news sources for your patch, filters what it finds against your ICP,
+and hands back a ranked, workable account list with sources, decay
+windows, entry personas and paste-ready outreach drafts. The dashboard
+renders it at `http://localhost:8787`.
 
 Built to be honest rather than impressive: every trigger needs an exact
 date and a working source URL, thin weeks report as thin weeks, and
 company misfortune is never used.
 
-## Setup (once)
+## Setup (once, ~2 minutes)
 
 1. Clone or download this repo into a **synced folder** (OneDrive), so a
    laptop reset can't take your data with it.
-2. Open `CLAUDE.md` and fill in the `SETUP` block: your name, territory,
-   revenue band, news sources, personas and sequences.
-3. Drop your sales playbook into the project root as `playbook.docx`.
-   The sweep follows it rather than improvising. It is gitignored, so it
-   stays local.
-4. (Optional) Add your case studies to `dashboard/data.js` under
+2. Double-click `start-dashboard.bat`. On first run it opens the **setup
+   page**: enter your name and territory, adjust the ICP band and sources,
+   and drop your sales playbook straight onto the page. It writes your
+   details into `CLAUDE.md` and saves the playbook locally (gitignored —
+   it never reaches the shared repo). Re-run setup any time at
+   `http://localhost:8787/setup.html`.
+3. (Optional) Add your case studies to `dashboard/data.js` under
    `caseStudies` — the board matches them to accounts by tag. Claude never
    invents these.
+4. Prefer doing it by hand? Everything the setup page writes lives in the
+   `SETUP` block of `CLAUDE.md`, and the playbook is just `playbook.docx`
+   in the project root.
 
 ## Run
 
@@ -30,8 +36,12 @@ company misfortune is never used.
   It writes `runs/YYYY-MM-DD.md`, updates `account-log.md`, and
   regenerates `dashboard/data.js`.
 - **The board:** double-click `start-dashboard.bat`. It starts a small
-  local server on port 8787 and opens the board in your browser. No
-  installs needed — it is plain PowerShell.
+  local server on port 8787 and opens the board in your browser (or the
+  setup page, until you've saved your setup). No installs needed — it is
+  plain PowerShell, listening on localhost only.
+- **Make it automatic:** in Claude Code, say
+  *"Run the buying-trigger sweep every Monday morning"* — it can schedule
+  the sweep for you.
 
 ## What stays local
 

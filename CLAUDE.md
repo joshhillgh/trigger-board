@@ -1,4 +1,4 @@
-# Weekly buying-trigger sweep
+# Weekly buying-trigger sweep — Insight AI
 
 ## How to run
 
@@ -14,17 +14,22 @@ primary job.
 
 ---
 
-## SETUP — fill this in before your first sweep
+<!-- SETUP:BEGIN -->
+## SETUP — fill this in on the setup page (start-dashboard.bat opens it), or by hand
 
-    MY NAME: <your name>
+    MY NAME: <your name — set on the setup page>
     MY ROLE: <your role and the signature you send under>
-    MY COMPANY: <your company>
-    WHAT WE SELL: <your services, in the words your playbook uses.
-      Attach or reference your 2-pagers and service catalogue.>
-    MY TERRITORY / SECTOR: <e.g. UK manufacturing, UK retail, ...>
-    WHAT COUNTS AS A WIN: <e.g. company expanding quickly, publicly
-      investing in something that will lead to software, data or AI
-      requirements>
+    MY COMPANY: Insight AI (formerly Amdaris, part of Insight Enterprises)
+    WHAT WE SELL: Applied AI and enterprise-grade software delivery.
+      Rapid AI (5-day prototype plus ROI model and scaling roadmap),
+      AI Centre of Excellence, Data Solutions, AI SDLC, Extended Teams /
+      UK security-cleared developers, Health Check. Bestshore delivery
+      from Romania, Moldova, Bulgaria, Ukraine plus UK onshore SC-cleared
+      teams. See the 2-pagers and service catalogue if attached.
+    MY TERRITORY / SECTOR: <your industry — e.g. UK manufacturing,
+      UK retail, UK financial services>
+    WHAT COUNTS AS A WIN: company expanding quickly, publicly investing
+      in something that will lead to software, data or AI requirements
 
     REVENUE FLOOR: <hard floor, e.g. £30m. Resolve this with your playbook
       owner and record the decision here — do not leave it ambiguous>
@@ -32,22 +37,23 @@ primary job.
     DISQUALIFIERS: <e.g. companies based outside the UK, or whose parent
       is, subject to the foreign-parent/local-autonomy test below>
 
-    PRIMARY NEWS SOURCE: <the one dated source you walk every run,
-      e.g. a daily sector news digest>
+    PRIMARY NEWS SOURCE: <the one dated source for YOUR industry that the
+      sweep walks every run — e.g. a daily sector news digest. Every
+      industry has one; ask Claude to suggest one on your first sweep.>
     ITS URL PATTERN: <the literal URL pattern, with an example.
       Note publishing days — weekdays only is common.>
     SUPPLEMENTARY SOURCES: <regional business press, sector associations,
       public-funding announcements, vendor customer-story pages>
-    TARGET ENTRY PERSONAS: <e.g. CIO / IT Director; Head of Systems;
-      Head of Data. Not the CEO or MD unless nothing else exists.>
-    SEQUENCES: <your outreach sequences and what each is for,
-      e.g. A = new technical leader (2 to 10 weeks in post).
-      B = modernisation programme, new site, acquisition, capex.
-      C = public AI statement or stalled pilot.
-      D = fit only, no trigger (low volume).>
-    CONTACT / JOB-CHANGE ALERT TOOL: <e.g. LinkedIn Sales Navigator>
-    CRM: <your CRM. If not connected here, the sweep outputs paste-ready
-      blocks instead>
+    TARGET ENTRY PERSONAS: CIO / IT Director / Head of IT; Head of
+      Systems / Digital / Operations Technology; Head of Data / Analytics /
+      BI; CTO / Head of Engineering. Not the CEO or MD unless nothing
+      else exists.
+    SEQUENCES: A = new technical leader (2 to 10 weeks in post).
+      B = core-system (e.g. ERP) or modernisation programme, new site,
+      acquisition, capex. C = public AI statement or stalled pilot
+      (Rapid AI play). D = fit only, no trigger (low volume).
+    CONTACT / JOB-CHANGE ALERT TOOL: LinkedIn Sales Navigator (plus Cognism)
+    CRM: Salesforce, not connected here, so output paste-ready blocks
 
 ### The revenue band
 
@@ -55,6 +61,7 @@ Record the agreed band here once it is resolved, including how to treat
 accounts between the floor and your playbook's primary band (flag them on
 every card), and what comes off the table above the ceiling. Do not let
 reports call the band unresolved once it isn't.
+<!-- SETUP:END -->
 
 ---
 

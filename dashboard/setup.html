@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trigger Board — Setup</title>
+<style>
+  :root{
+    --bg:#10151c; --panel:#161d26; --panel-2:#1b232e; --line:#26313f;
+    --ink:#e7edf5; --ink-2:#9fb0c4; --ink-3:#6f8094;
+    --live:#3ddc97; --warn:#e8c468; --dead:#e4766a; --link:#7fb2ff;
+    --seq:#6c8cff;
+    --r:12px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.5}
+  a{color:var(--link);text-decoration:none}
+  :focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:4px}
+  .wrap{max-width:760px;margin:0 auto;padding:36px 20px 80px}
+  h1{font-size:26px;margin:0 0 6px}
+  .sub{color:var(--ink-3);font-size:13.5px;margin:0 0 26px}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+    padding:22px 24px;margin:0 0 18px}
+  .step h2{font-size:16px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  .step h2 .n{background:var(--seq);color:#fff;border-radius:50%;width:24px;height:24px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+  .step p.hint{color:var(--ink-3);font-size:13px;margin:0 0 16px}
+  label{display:block;font-size:13px;color:var(--ink-2);font-weight:600;margin:14px 0 4px}
+  label .opt{color:var(--ink-3);font-weight:400}
+  input[type=text],textarea{width:100%;background:var(--panel-2);border:1px solid #3a4859;
+    color:var(--ink);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:14px}
+  input::placeholder,textarea::placeholder{color:var(--ink-3)}
+  textarea{resize:vertical;min-height:62px}
+  .row{display:flex;gap:14px}
+  .row>div{flex:1}
+  .drop{border:2px dashed #3a4859;border-radius:var(--r);padding:28px 20px;text-align:center;
+    color:var(--ink-2);cursor:pointer;transition:border-color .15s,background .15s;margin-top:6px}
+  .drop:hover,.drop.over{border-color:var(--seq);background:var(--panel-2)}
+  .drop b{color:var(--ink)}
+  .drop .ok{color:var(--live);font-weight:600}
+  .drop small{display:block;color:var(--ink-3);margin-top:6px}
+  .note{font-size:12.5px;color:var(--ink-3);margin-top:10px}
+  .actions{margin-top:26px;display:flex;align-items:center;gap:16px}
+  button.primary{background:var(--seq);color:#fff;border:0;border-radius:10px;
+    padding:12px 26px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+  button.primary:hover{filter:brightness(1.1)}
+  button.primary:disabled{opacity:.5;cursor:default}
+  .err{color:var(--dead);font-size:13.5px}
+  /* success panel */
+  #done{display:none}
+  #done .step{border-color:#1f4635}
+  .big-ok{font-size:40px;line-height:1;margin-bottom:8px}
+  .cmd{display:flex;gap:10px;align-items:stretch;margin:12px 0 4px}
+  .cmd code{flex:1;background:#0c1117;border:1px solid var(--line);border-radius:8px;
+    padding:12px 14px;font-size:14px;color:var(--live);font-family:Consolas,monospace;
+    display:flex;align-items:center}
+  .cmd button{background:var(--panel-2);border:1px solid #3a4859;color:var(--ink);
+    border-radius:8px;padding:0 16px;cursor:pointer;font-family:inherit;font-size:13.5px}
+  .cmd button:hover{border-color:var(--seq)}
+  ol.next{margin:10px 0 0;padding-left:20px;color:var(--ink-2);font-size:14px}
+  ol.next li{margin-bottom:10px}
+  ol.next b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Welcome to the Trigger Board</h1>
+  <p class="sub">A weekly, source-cited buying-trigger sweep for your patch, run by Claude Code, rendered as a live board. The Insight AI offer and plays are already baked in — you just set who you are and the industry you sell into. Two minutes, and everything you enter stays on this machine.</p>
+
+  <form id="form">
+    <div class="step">
+      <h2><span class="n">1</span> Who you are</h2>
+      <p class="hint">Used to sign your outreach drafts and frame the sweep. Only your name and patch are required.</p>
+      <div class="row">
+        <div><label for="fName">Your name</label>
+          <input type="text" id="fName" placeholder="e.g. Sam Taylor" required></div>
+        <div><label for="fRole">Role / signature <span class="opt">(optional)</span></label>
+          <input type="text" id="fRole" placeholder="e.g. Senior Business Development"></div>
+      </div>
+      <label for="fTerritory">Your territory / industry</label>
+      <input type="text" id="fTerritory" placeholder="e.g. UK manufacturing, UK retail, UK financial services" required>
+      <label for="fWin">What counts as a win</label>
+      <textarea id="fWin">company expanding quickly, publicly investing in something that will lead to software, data or AI requirements</textarea>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">2</span> Your ICP band</h2>
+      <p class="hint">The sweep disqualifies hard — that's the point. Agree these with whoever owns your playbook.</p>
+      <div class="row">
+        <div><label for="fFloor">Revenue floor</label>
+          <input type="text" id="fFloor" value="£30m hard floor"></div>
+        <div><label for="fCeiling">Revenue ceiling</label>
+          <input type="text" id="fCeiling" value="£500m; above it, report as Tier 1, different play"></div>
+      </div>
+      <label for="fDisq">Disqualifiers</label>
+      <textarea id="fDisq">companies based outside the UK, or whose parent is, subject to the foreign-parent/local-autonomy test in this file</textarea>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">3</span> Your industry's sources</h2>
+      <p class="hint">The one part that really changes per industry. The primary source should be a dated daily or weekly news digest the sweep can walk edition by edition — every industry has one. Not sure? Leave it blank and ask Claude to suggest one on your first sweep.</p>
+      <label for="fPrimary">Primary news source <span class="opt">(optional)</span></label>
+      <input type="text" id="fPrimary" placeholder="e.g. The Manufacturer, Daily Manufacturing News Digest">
+      <label for="fPattern">Its URL pattern <span class="opt">(optional, helps the sweep)</span></label>
+      <input type="text" id="fPattern" placeholder="e.g. https://www.themanufacturer.com/articles/daily-manufacturing-news-digest-...-DDMMYY/ (weekdays only)">
+      <label for="fSupp">Supplementary sources <span class="opt">(optional)</span></label>
+      <textarea id="fSupp" placeholder="e.g. regional business press; sector association announcements; public-funding announcements; vendor customer-story pages"></textarea>
+      <label for="fPersonas">Target entry personas</label>
+      <textarea id="fPersonas">CIO / IT Director / Head of IT; Head of Systems / Digital / Operations Technology; Head of Data / Analytics / BI; CTO / Head of Engineering. Not the CEO or MD unless nothing else exists.</textarea>
+    </div>
+
+    <div class="step">
+      <h2><span class="n">4</span> Your playbook</h2>
+      <p class="hint">The sweep follows your signed-off playbook rather than improvising. It is saved to this folder only and is git-ignored, so it can never end up in the shared repo.</p>
+      <div class="drop" id="drop" tabindex="0" role="button" aria-label="Upload playbook">
+        <span id="dropText"><b>Drop your playbook here</b> or click to choose a file</span>
+        <small>Word document (.docx) — saved locally as playbook.docx</small>
+      </div>
+      <input type="file" id="file" accept=".docx" hidden>
+      <p class="note">No playbook yet? You can save without one and drop it in later — the sweep will ask for it.</p>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="primary" id="save">Save my setup</button>
+      <span class="err" id="err"></span>
+    </div>
+  </form>
+
+  <div id="done">
+    <div class="step">
+      <div class="big-ok">✅</div>
+      <h2>You're set up</h2>
+      <p class="hint" id="doneDetail"></p>
+      <ol class="next">
+        <li><b>Start your first sweep:</b> open this folder in Claude Code and paste:
+          <div class="cmd">
+            <code id="cmdText">Run this week's buying-trigger sweep per CLAUDE.md.</code>
+            <button type="button" id="copy">Copy</button>
+          </div>
+        </li>
+        <li><b>Make it automatic:</b> in Claude Code, say
+          <i>"Run the buying-trigger sweep every Monday morning."</i> — it can schedule itself.</li>
+        <li><b>Open your board:</b> <a href="/dashboard.html">dashboard.html</a> — it fills with real accounts after the first sweep. Re-run setup any time at <a href="/setup.html">setup.html</a>.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fileData = null, fileName = null;
+  var drop = document.getElementById('drop');
+  var fileInput = document.getElementById('file');
+  var dropText = document.getElementById('dropText');
+  var err = document.getElementById('err');
+
+  function takeFile(f){
+    if (!f) return;
+    if (!/\.docx$/i.test(f.name)) { err.textContent = "That isn't a .docx file."; return; }
+    if (f.size > 20*1024*1024) { err.textContent = "File is over 20 MB."; return; }
+    err.textContent = "";
+    var r = new FileReader();
+    r.onload = function(){
+      fileData = r.result.split(',')[1];
+      fileName = f.name;
+      dropText.innerHTML = '<span class="ok">✓ ' + f.name.replace(/</g,'&lt;') +
+        '</span> — will be saved as playbook.docx';
+    };
+    r.readAsDataURL(f);
+  }
+  drop.addEventListener('click', function(){ fileInput.click(); });
+  drop.addEventListener('keydown', function(e){ if (e.key==='Enter'||e.key===' ') { e.preventDefault(); fileInput.click(); } });
+  fileInput.addEventListener('change', function(){ takeFile(fileInput.files[0]); });
+  ['dragover','dragenter'].forEach(function(ev){
+    drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add('over'); });
+  });
+  ['dragleave','drop'].forEach(function(ev){
+    drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove('over'); });
+  });
+  drop.addEventListener('drop', function(e){ takeFile(e.dataTransfer.files[0]); });
+
+  document.getElementById('copy').addEventListener('click', function(){
+    navigator.clipboard.writeText(document.getElementById('cmdText').textContent).then(function(){
+      document.getElementById('copy').textContent = 'Copied ✓';
+      setTimeout(function(){ document.getElementById('copy').textContent = 'Copy'; }, 2000);
+    });
+  });
+
+  function v(id){ return document.getElementById(id).value.trim(); }
+
+  document.getElementById('form').addEventListener('submit', function(e){
+    e.preventDefault();
+    err.textContent = "";
+    var payload = {
+      name: v('fName'), role: v('fRole'),
+      territory: v('fTerritory'), win: v('fWin'),
+      floor: v('fFloor'), ceiling: v('fCeiling'), disq: v('fDisq'),
+      primary: v('fPrimary'), pattern: v('fPattern'), supp: v('fSupp'),
+      personas: v('fPersonas'),
+      playbookBase64: fileData
+    };
+    var btn = document.getElementById('save');
+    btn.disabled = true; btn.textContent = "Saving…";
+    fetch('/setup', { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload) })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res.ok) throw new Error(res.error || 'Save failed');
+      document.getElementById('form').style.display = 'none';
+      document.getElementById('done').style.display = 'block';
+      document.getElementById('doneDetail').textContent =
+        'Your setup was written into CLAUDE.md' +
+        (fileName ? ' and your playbook was saved as playbook.docx.' :
+        '. No playbook was uploaded — drop playbook.docx into the project folder before your first sweep, or come back here.');
+      window.scrollTo({top:0, behavior:'smooth'});
+    })
+    .catch(function(ex){
+      err.textContent = ex.message;
+      btn.disabled = false; btn.textContent = "Save my setup";
+    });
+  });
+})();
+</script>
+</body>
+</html>
